@@ -10,7 +10,8 @@ const App = () => {
     try {
       // Initialize OpenAI API client
       const client = new openai.OpenAI({
-        apiKey: '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',
+        apiKey: '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',
+        // Make sure to set the option for browser usage if applicable
         dangerouslyAllowBrowser: true
       });
 
@@ -34,6 +35,20 @@ const App = () => {
     }
   };
 
+  const [checkedSteps, setCheckedSteps] = useState([]);
+
+  const toggleStep = (stepIndex) => {
+    if (checkedSteps.includes(stepIndex)) {
+      setCheckedSteps(checkedSteps.filter(index => index !== stepIndex));
+    } else {
+      setCheckedSteps([...checkedSteps, stepIndex]);
+    }
+  };
+
+  const isStepChecked = (stepIndex) => {
+    return checkedSteps.includes(stepIndex);
+  };
+
   return (
     <div className="flex flex-col items-center h-screen">
       <div className="p-6 rounded-lg bg-white shadow-md max-h-80 object-contain">
@@ -54,7 +69,15 @@ const App = () => {
           <h2 className="text-xl font-semibold mb-4">Steps to Complete Task:</h2>
           {steps.split('\n').map((step, index) => (
             step.trim() !== '' && (
-              <div key={index} className="bg-gray-100 rounded-md p-4 mb-4">{step}</div>
+              <div key={index} className="flex items-center gap-2 bg-gray-100 rounded-md p-4 mb-4">
+                <input
+                  type="checkbox"
+                  checked={isStepChecked(index)}
+                  onChange={() => toggleStep(index)}
+                  className="h-5 w-5 text-blue-500"
+                />
+                <p className={isStepChecked(index) ? 'line-through' : ''}>{step}</p>
+              </div>
             )
           ))}
         </div>
