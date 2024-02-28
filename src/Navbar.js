@@ -7,7 +7,7 @@ import {
   } from "@material-tailwind/react";
   import { BellIcon, Cog6ToothIcon } from "@heroicons/react/24/solid";
    
-  export function NavbarDark() {
+  const Nav = () => {
     return (
       <Navbar
         variant="gradient"
@@ -54,4 +54,4 @@ import {
     );
   }
 
-export default Navbar;
+export default Nav;

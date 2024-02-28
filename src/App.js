@@ -52,7 +52,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center h-screen">
       <div className="p-6 rounded-lg bg-white shadow-md max-h-80 object-contain">
-        <h1 className="text-2xl font-bold mb-4">Productivity App</h1>
+        <h1 className="text-2xl font-bold mb-4">How can we help?</h1>
         <input
           type="text"
           placeholder="Enter your task"
